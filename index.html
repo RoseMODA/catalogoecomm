@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+s o <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -100,12 +100,12 @@
   <nav aria-label="Categorías de productos"
      class="category-nav hidden sm:flex justify-center space-x-10 mt-5 mb-2 select-none font-semibold font-mono max-w-5xl mx-auto px-4">
 
-    <a href="#" tabindex="0">Mujer</a>
-    <a href="#" tabindex="0">Hombre</a>
-    <a href="#" tabindex="0">Niños/Bebes</a>
-    <a href="#" tabindex="0">Calzado</a>
-    <a href="#" tabindex="0">Ropa Interior</a>
-    <a href="#" tabindex="0">Accesorios</a>
+    <a href="#" tabindex="0" data-category="mujer">Mujer</a>
+    <a href="#" tabindex="0" data-category="hombre">Hombre</a>
+    <a href="#" tabindex="0" data-category="ninos">Niños/Bebes</a>
+    <a href="#" tabindex="0" data-category="calzado">Calzado</a>
+    <a href="#" tabindex="0" data-category="ropa-interior">Ropa Interior</a>
+    <a href="#" tabindex="0" data-category="accesorios">Accesorios</a>
   </nav>
 
   <!-- "Ver todo" button -->
@@ -204,11 +204,108 @@
     </section>
   </div>
 
+
+  <!-- Category page view (hidden by default) -->
+  <div id="category-page" class="hidden min-h-screen">
+    <!-- Category header with navigation -->
+    <div class="bg-white border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 py-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-4">
+            <button id="back-to-home" class="text-gray-600 hover:text-gray-800 flex items-center space-x-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg>
+              <span>Volver</span>
+            </button>
+            <h1 id="category-title" class="text-2xl font-bold text-gray-900"></h1>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div id="results-count" class="text-sm text-gray-600">
+              <!-- Results count will be shown here -->
+            </div>
+            <div class="flex items-center space-x-2">
+              <label for="sort-select" class="text-sm text-gray-600">Ordenar por:</label>
+              <select id="sort-select" class="text-sm border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-red-500">
+                <option value="featured">Destacados</option>
+                <option value="price-low">Precio: Menor a Mayor</option>
+                <option value="price-high">Precio: Mayor a Menor</option>
+                <option value="name">Nombre A-Z</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main category content -->
+    <div class="flex min-h-screen">
+      <!-- Left sidebar with subcategories -->
+      <aside class="w-64 bg-white border-r border-gray-200 flex-shrink-0">
+        <div class="p-4">
+          <!-- Subcategory menu will be dynamically inserted here -->
+          <div id="subcategory-menu" class="space-y-1">
+            <!-- Dynamic subcategory content -->
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right content area with products -->
+      <main class="flex-1 bg-gray-50">
+        <div class="p-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="catalog-grid">
+            <!-- Products will be dynamically inserted here -->
+          </div>
+          
+          <!-- No results message -->
+          <div id="no-results" class="hidden text-center py-12">
+            <div class="text-gray-400 text-6xl mb-4">🔍</div>
+            <h3 class="text-xl font-semibold text-gray-600 mb-2">No se encontraron productos</h3>
+            <p class="text-gray-500">Intenta ajustar los filtros o buscar algo diferente</p>
+          </div>
+
+          <!-- Ver más button -->
+          <div class="text-center mt-8">
+            <button id="load-more" class="bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition-colors">
+              VER MÁS ▼
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
   <!-- Full catalog grid (hidden by default) -->
   <div id="full-catalog" class="hidden">
     <div class="banner-nuevos" aria-live="polite">CATÁLOGO COMPLETO</div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 py-6 max-w-7xl mx-auto" id="catalog-grid">
-      <!-- Products will be dynamically inserted here -->
+    
+    <!-- Category view with products -->
+    <div id="category-view" class="max-w-7xl mx-auto px-4 py-6">
+      <div class="flex items-center justify-between mb-6">
+        <div id="results-count-old" class="text-sm text-gray-600">
+          <!-- Results count will be shown here -->
+        </div>
+        <div class="flex items-center space-x-2">
+          <label for="sort-select-old" class="text-sm text-gray-600">Ordenar por:</label>
+          <select id="sort-select-old" class="text-sm border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-red-500">
+            <option value="featured">Destacados</option>
+            <option value="price-low">Precio: Menor a Mayor</option>
+            <option value="price-high">Precio: Mayor a Menor</option>
+            <option value="name">Nombre A-Z</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="catalog-grid-old">
+        <!-- Products will be dynamically inserted here -->
+      </div>
+      
+      <!-- No results message -->
+      <div id="no-results-old" class="hidden text-center py-12">
+        <div class="text-gray-400 text-6xl mb-4">🔍</div>
+        <h3 class="text-xl font-semibold text-gray-600 mb-2">No se encontraron productos</h3>
+        <p class="text-gray-500">Intenta ajustar los filtros o buscar algo diferente</p>
+      </div>
     </div>
   </div>
 

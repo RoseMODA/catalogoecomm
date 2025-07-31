@@ -127,6 +127,102 @@ const products = [
     stock: 15,
     featured: false,
     onSale: false
+  },
+  {
+    id: 9,
+    name: "Camisa Formal",
+    category: "hombre",
+    price: 18000,
+    originalPrice: 22000,
+    discount: 18,
+    sku: "H-CAM01",
+    images: ["assets/img/IMG_1302.JPG"],
+    colors: ["Blanco", "Azul", "Negro"],
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    description: "Camisa formal de algodón para ocasiones especiales.",
+    stock: 12,
+    featured: true,
+    onSale: true
+  },
+  {
+    id: 10,
+    name: "Botas de Cuero",
+    category: "calzado",
+    price: 65000,
+    originalPrice: null,
+    discount: null,
+    sku: "C-BOT01",
+    images: ["assets/img/IMG_1311.JPG"],
+    colors: ["Marrón", "Negro"],
+    sizes: ["38", "39", "40", "41", "42", "43", "44"],
+    description: "Botas de cuero genuino, resistentes y elegantes.",
+    stock: 8,
+    featured: false,
+    onSale: false
+  },
+  {
+    id: 11,
+    name: "Conjunto Infantil",
+    category: "ninos",
+    price: 12000,
+    originalPrice: 15000,
+    discount: 20,
+    sku: "N-CONJ01",
+    images: ["assets/img/IMG_1310.JPG"],
+    colors: ["Azul", "Rosa", "Verde"],
+    sizes: ["2", "4", "6", "8"],
+    description: "Conjunto cómodo para niños, ideal para jugar.",
+    stock: 25,
+    featured: true,
+    onSale: true
+  },
+  {
+    id: 12,
+    name: "Blusa Elegante",
+    category: "mujer",
+    price: 16000,
+    originalPrice: null,
+    discount: null,
+    sku: "M-BLU01",
+    images: ["assets/img/IMG_1294.JPG"],
+    colors: ["Blanco", "Negro", "Rosa", "Azul"],
+    sizes: ["XS", "S", "M", "L", "XL"],
+    description: "Blusa elegante para ocasiones especiales.",
+    stock: 18,
+    featured: false,
+    onSale: false
+  },
+  {
+    id: 13,
+    name: "Sandalias de Verano",
+    category: "calzado",
+    price: 25000,
+    originalPrice: 30000,
+    discount: 17,
+    sku: "C-SAN01",
+    images: ["assets/img/IMG_1311.JPG"],
+    colors: ["Beige", "Negro", "Blanco"],
+    sizes: ["35", "36", "37", "38", "39", "40"],
+    description: "Sandalias cómodas para el verano.",
+    stock: 20,
+    featured: false,
+    onSale: true
+  },
+  {
+    id: 14,
+    name: "Pijama Infantil",
+    category: "ninos",
+    price: 8000,
+    originalPrice: null,
+    discount: null,
+    sku: "N-PIJ01",
+    images: ["assets/img/IMG_1310.JPG"],
+    colors: ["Celeste", "Rosa", "Amarillo"],
+    sizes: ["2", "4", "6", "8", "10", "12"],
+    description: "Pijama suave y cómodo para niños.",
+    stock: 30,
+    featured: false,
+    onSale: false
   }
 ];
 
@@ -138,6 +234,96 @@ let currentFilters = {
   category: 'all',
   search: '',
   onSale: false
+};
+
+// Category subcategories configuration
+const categorySubcategories = {
+  mujer: {
+    title: "Ver todo de MUJER",
+    items: [
+      { name: "Ver todo de MUJER", type: "all", active: true },
+      { name: "Vestidos", type: "vestidos" },
+      { name: "Prendas de Torso", type: "torso" },
+      { name: "Prendas de Piernas", type: "piernas" },
+      { name: "VERANO", type: "season", season: "verano", class: "season-verano" },
+      { name: "MEDIA ESTACION", type: "season", season: "media", class: "season-media" },
+      { name: "INVIERNO", type: "season", season: "invierno", class: "season-invierno" },
+      { name: "Formal", type: "formal" },
+      { name: "Fiestas", type: "fiestas" },
+      { name: "TALLAS", type: "tallas" }
+    ]
+  },
+  hombre: {
+    title: "Ver todo de HOMBRE",
+    items: [
+      { name: "Ver todo de HOMBRE", type: "all", active: true },
+      { name: "Camisas", type: "camisas" },
+      { name: "Pantalones", type: "pantalones" },
+      { name: "Camperas", type: "camperas" },
+      { name: "VERANO", type: "season", season: "verano", class: "season-verano" },
+      { name: "MEDIA ESTACION", type: "season", season: "media", class: "season-media" },
+      { name: "INVIERNO", type: "season", season: "invierno", class: "season-invierno" },
+      { name: "Deportivo", type: "deportivo" },
+      { name: "Formal", type: "formal" },
+      { name: "TALLAS", type: "tallas" }
+    ]
+  },
+  ninos: {
+    title: "Ver todo de NIÑOS/BEBÉS",
+    items: [
+      { name: "Ver todo de NIÑOS/BEBÉS", type: "all", active: true },
+      { name: "Bebés (0-2 años)", type: "bebes" },
+      { name: "Niños (3-8 años)", type: "ninos" },
+      { name: "Niñas (3-8 años)", type: "ninas" },
+      { name: "VERANO", type: "season", season: "verano", class: "season-verano" },
+      { name: "MEDIA ESTACION", type: "season", season: "media", class: "season-media" },
+      { name: "INVIERNO", type: "season", season: "invierno", class: "season-invierno" },
+      { name: "Pijamas", type: "pijamas" },
+      { name: "TALLAS", type: "tallas" }
+    ]
+  },
+  calzado: {
+    title: "Ver todo de CALZADO",
+    items: [
+      { name: "Ver todo de CALZADO", type: "all", active: true },
+      { name: "Zapatillas", type: "zapatillas" },
+      { name: "Botas", type: "botas" },
+      { name: "Sandalias", type: "sandalias" },
+      { name: "Zapatos Formales", type: "formales" },
+      { name: "VERANO", type: "season", season: "verano", class: "season-verano" },
+      { name: "MEDIA ESTACION", type: "season", season: "media", class: "season-media" },
+      { name: "INVIERNO", type: "season", season: "invierno", class: "season-invierno" },
+      { name: "TALLAS", type: "tallas" }
+    ]
+  },
+  "ropa-interior": {
+    title: "Ver todo de ROPA INTERIOR",
+    items: [
+      { name: "Ver todo de ROPA INTERIOR", type: "all", active: true },
+      { name: "Ropa Interior Mujer", type: "mujer" },
+      { name: "Ropa Interior Hombre", type: "hombre" },
+      { name: "Ropa Interior Infantil", type: "infantil" },
+      { name: "TALLAS", type: "tallas" }
+    ]
+  },
+  accesorios: {
+    title: "Ver todo de ACCESORIOS",
+    items: [
+      { name: "Ver todo de ACCESORIOS", type: "all", active: true },
+      { name: "Carteras", type: "carteras" },
+      { name: "Cinturones", type: "cinturones" },
+      { name: "Sombreros", type: "sombreros" },
+      { name: "Joyas", type: "joyas" },
+      { name: "Bufandas", type: "bufandas" }
+    ]
+  }
+};
+
+// Current subcategory filter
+let currentSubcategory = {
+  category: 'all',
+  subcategory: 'all',
+  sortBy: 'featured'
 };
 
 // View mode state
@@ -186,6 +372,36 @@ function setupEventListeners() {
   if (verTodoBtn) {
     verTodoBtn.addEventListener('click', showAllProducts);
   }
+  
+  // Sort dropdown
+  const sortSelect = document.getElementById('sort-select');
+  if (sortSelect) {
+    sortSelect.addEventListener('change', handleSortChange);
+  }
+  
+  // Back to home button
+  const backToHomeBtn = document.getElementById('back-to-home');
+  if (backToHomeBtn) {
+    backToHomeBtn.addEventListener('click', backToHome);
+  }
+  
+  // Load more button
+  const loadMoreBtn = document.getElementById('load-more');
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', loadMoreProducts);
+  }
+  
+  // Legacy sidebar close button
+  const closeSidebarBtn = document.getElementById('close-sidebar');
+  if (closeSidebarBtn) {
+    closeSidebarBtn.addEventListener('click', closeCategorySidebar);
+  }
+  
+  // Legacy sidebar overlay
+  const sidebarOverlay = document.getElementById('sidebar-overlay');
+  if (sidebarOverlay) {
+    sidebarOverlay.addEventListener('click', closeCategorySidebar);
+  }
 }
 
 function handleSearch(e) {
@@ -220,7 +436,10 @@ function closeMobileSearch() {
 
 function handleCategoryClick(e) {
   e.preventDefault();
-  const category = e.target.textContent.toLowerCase();
+  
+  // Get category from data attribute or text content
+  const categoryData = e.target.dataset.category;
+  const categoryText = e.target.textContent.toLowerCase();
   
   // Map category names
   const categoryMap = {
@@ -233,9 +452,19 @@ function handleCategoryClick(e) {
     'ver todo': 'all'
   };
   
-  currentFilters.category = categoryMap[category] || 'all';
-  isFullCatalogView = false; // Reset to carousel view when filtering by category
-  renderProducts();
+  const selectedCategory = categoryData || categoryMap[categoryText] || 'all';
+  
+  // If selecting a specific category, show category page
+  if (selectedCategory !== 'all' && categorySubcategories[selectedCategory]) {
+    showCategoryPage(selectedCategory);
+  } else {
+    // Show all products
+    currentFilters.category = 'all';
+    currentSubcategory.category = 'all';
+    currentSubcategory.subcategory = 'all';
+    isFullCatalogView = true;
+    renderProducts();
+  }
   
   // Close mobile menu if open
   const mobileMenu = document.getElementById('mobile-menu');
@@ -251,9 +480,167 @@ function showAllProducts() {
   const searchInput = document.querySelector('input[type="search"]');
   if (searchInput) searchInput.value = '';
   
+  // Reset subcategory filters
+  currentSubcategory.category = 'all';
+  currentSubcategory.subcategory = 'all';
+  currentSubcategory.sortBy = 'featured';
+  
   // Toggle to full catalog view
   isFullCatalogView = true;
   renderProducts();
+}
+
+function handleSortChange(e) {
+  currentSubcategory.sortBy = e.target.value;
+  renderProducts();
+}
+
+function showCategoryPage(category) {
+  const categoryPage = document.getElementById('category-page');
+  const carouselSections = document.getElementById('carousel-sections');
+  const fullCatalog = document.getElementById('full-catalog');
+  const categoryTitle = document.getElementById('category-title');
+  const subcategoryMenu = document.getElementById('subcategory-menu');
+  
+  if (!categoryPage || !categorySubcategories[category]) return;
+  
+  // Hide home sections and show category page
+  if (carouselSections) carouselSections.classList.add('hidden');
+  if (fullCatalog) fullCatalog.classList.add('hidden');
+  categoryPage.classList.remove('hidden');
+  
+  // Set title
+  categoryTitle.textContent = categorySubcategories[category].title;
+  
+  // Generate subcategory menu
+  const menuHTML = categorySubcategories[category].items.map(item => {
+    const activeClass = item.active ? 'active' : '';
+    const seasonClass = item.class || '';
+    return `
+      <a href="#" class="subcategory-item ${activeClass} ${seasonClass}" 
+         data-category="${category}" 
+         data-subcategory="${item.type}"
+         data-season="${item.season || ''}">
+        ${item.name}
+      </a>
+    `;
+  }).join('');
+  
+  subcategoryMenu.innerHTML = menuHTML;
+  
+  // Add event listeners to subcategory items
+  subcategoryMenu.querySelectorAll('.subcategory-item').forEach(item => {
+    item.addEventListener('click', handleSubcategoryClick);
+  });
+  
+  // Set current category and render products
+  currentFilters.category = category;
+  currentSubcategory.category = category;
+  currentSubcategory.subcategory = 'all';
+  
+  // Render products in the new page
+  renderCategoryProducts();
+}
+
+function backToHome() {
+  const categoryPage = document.getElementById('category-page');
+  const carouselSections = document.getElementById('carousel-sections');
+  
+  // Hide category page and show home
+  categoryPage.classList.add('hidden');
+  if (carouselSections) carouselSections.classList.remove('hidden');
+  
+  // Reset filters
+  currentFilters.category = 'all';
+  currentSubcategory.category = 'all';
+  currentSubcategory.subcategory = 'all';
+  isFullCatalogView = false;
+}
+
+function loadMoreProducts() {
+  // For now, just show a message - in a real app this would load more products
+  const loadMoreBtn = document.getElementById('load-more');
+  if (loadMoreBtn) {
+    loadMoreBtn.textContent = 'CARGANDO...';
+    setTimeout(() => {
+      loadMoreBtn.textContent = 'VER MÁS ▼';
+    }, 1000);
+  }
+}
+
+function closeCategorySidebar() {
+  const sidebar = document.getElementById('category-sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  
+  if (sidebar) sidebar.classList.add('hidden');
+  if (overlay) overlay.classList.add('hidden');
+}
+
+function handleSubcategoryClick(e) {
+  e.preventDefault();
+  
+  const category = e.target.dataset.category;
+  const subcategory = e.target.dataset.subcategory;
+  const season = e.target.dataset.season;
+  
+  // Update current filters
+  currentFilters.category = category;
+  currentSubcategory.category = category;
+  currentSubcategory.subcategory = subcategory;
+  
+  // Update active state in menu
+  const subcategoryMenu = document.getElementById('subcategory-menu');
+  subcategoryMenu.querySelectorAll('.subcategory-item').forEach(item => {
+    item.classList.remove('active');
+  });
+  e.target.classList.add('active');
+  
+  // Render products
+  renderCategoryProducts();
+}
+
+function renderCategoryProducts() {
+  let filteredProducts = products.filter(product => {
+    const matchesCategory = currentFilters.category === 'all' || product.category === currentFilters.category;
+    const matchesSearch = currentFilters.search === '' || 
+                         product.name.toLowerCase().includes(currentFilters.search) ||
+                         product.description.toLowerCase().includes(currentFilters.search);
+    const matchesSale = !currentFilters.onSale || product.onSale;
+    
+    // Subcategory filtering
+    if (currentSubcategory.subcategory !== 'all') {
+      // For now, we'll show all products in the category
+      // In a real implementation, you would add subcategory logic here
+      // based on product attributes like type, season, etc.
+    }
+    
+    return matchesCategory && matchesSearch && matchesSale;
+  });
+  
+  // Apply sorting
+  filteredProducts = sortProducts(filteredProducts, currentSubcategory.sortBy);
+  
+  // Update results count
+  updateResultsCount(filteredProducts.length);
+  
+  // Render products in category page
+  const catalogGrid = document.getElementById('catalog-grid');
+  const noResults = document.getElementById('no-results');
+  
+  if (filteredProducts.length === 0) {
+    if (catalogGrid) catalogGrid.innerHTML = '';
+    if (noResults) noResults.classList.remove('hidden');
+  } else {
+    if (noResults) noResults.classList.add('hidden');
+    if (catalogGrid) {
+      catalogGrid.innerHTML = filteredProducts.map(product => createCatalogProductCard(product)).join('');
+      
+      // Add click listeners to product cards
+      catalogGrid.querySelectorAll('.catalog-product-card').forEach((item, index) => {
+        item.addEventListener('click', () => openProductModal(filteredProducts[index]));
+      });
+    }
+  }
 }
 
 function renderProducts() {
@@ -264,8 +651,20 @@ function renderProducts() {
                          product.description.toLowerCase().includes(currentFilters.search);
     const matchesSale = !currentFilters.onSale || product.onSale;
     
+    // Subcategory filtering (only apply in full catalog view)
+    if (isFullCatalogView && currentSubcategory.subcategory !== 'all') {
+      // For now, we'll show all products in the category
+      // In a real implementation, you would add subcategory logic here
+      // based on product attributes like type, season, etc.
+    }
+    
     return matchesCategory && matchesSearch && matchesSale;
   });
+  
+  // Apply sorting
+  if (isFullCatalogView) {
+    filteredProducts = sortProducts(filteredProducts, currentSubcategory.sortBy);
+  }
   
   if (isFullCatalogView) {
     showFullCatalog(filteredProducts);
@@ -287,6 +686,26 @@ function showCarouselView(filteredProducts) {
   updateCarouselTrack('carousel-track-ofertas', filteredProducts.filter(p => p.onSale));
 }
 
+function sortProducts(products, sortBy) {
+  const sortedProducts = [...products];
+  
+  switch (sortBy) {
+    case 'price-low':
+      return sortedProducts.sort((a, b) => a.price - b.price);
+    case 'price-high':
+      return sortedProducts.sort((a, b) => b.price - a.price);
+    case 'name':
+      return sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+    case 'featured':
+    default:
+      return sortedProducts.sort((a, b) => {
+        if (a.featured && !b.featured) return -1;
+        if (!a.featured && b.featured) return 1;
+        return 0;
+      });
+  }
+}
+
 function showFullCatalog(filteredProducts) {
   // Hide carousel sections
   const carouselSections = document.getElementById('carousel-sections');
@@ -295,14 +714,167 @@ function showFullCatalog(filteredProducts) {
   if (carouselSections) carouselSections.classList.add('hidden');
   if (fullCatalog) fullCatalog.classList.remove('hidden');
   
-  // Render all products in grid without duplicates
+  // Update results count
+  updateResultsCount(filteredProducts.length);
+  
+  // Render products
   const catalogGrid = document.getElementById('catalog-grid');
-  if (catalogGrid) {
-    catalogGrid.innerHTML = filteredProducts.map(product => createCatalogProductCard(product)).join('');
-    
-    // Add click listeners to product cards
-    catalogGrid.querySelectorAll('.catalog-product-card').forEach((item, index) => {
-      item.addEventListener('click', () => openProductModal(filteredProducts[index]));
+  const noResults = document.getElementById('no-results');
+  
+  if (filteredProducts.length === 0) {
+    if (catalogGrid) catalogGrid.innerHTML = '';
+    if (noResults) noResults.classList.remove('hidden');
+  } else {
+    if (noResults) noResults.classList.add('hidden');
+    if (catalogGrid) {
+      catalogGrid.innerHTML = filteredProducts.map(product => createCatalogProductCard(product)).join('');
+      
+      // Add click listeners to product cards
+      catalogGrid.querySelectorAll('.catalog-product-card').forEach((item, index) => {
+        item.addEventListener('click', () => openProductModal(filteredProducts[index]));
+      });
+    }
+  }
+}
+
+function updateResultsCount(count) {
+  const resultsCount = document.getElementById('results-count');
+  if (resultsCount) {
+    resultsCount.textContent = `${count} producto${count !== 1 ? 's' : ''} encontrado${count !== 1 ? 's' : ''}`;
+  }
+}
+
+function renderFilterPanel(baseProducts) {
+  const filterOptions = document.getElementById('filter-options');
+  if (!filterOptions) return;
+  
+  // Get unique colors and sizes from base products (before advanced filtering)
+  const uniqueColors = [...new Set(baseProducts.flatMap(p => p.colors))];
+  const uniqueSizes = [...new Set(baseProducts.flatMap(p => p.sizes))];
+  
+  // Get price range
+  const prices = baseProducts.map(p => p.price);
+  const minPrice = Math.min(...prices);
+  const maxPrice = Math.max(...prices);
+  
+  let html = '';
+  
+  // Color filters
+  if (uniqueColors.length > 0) {
+    html += `
+      <div class="filter-group">
+        <h3>Color</h3>
+        ${uniqueColors.map(color => `
+          <div class="filter-option">
+            <input type="checkbox" id="color-${color}" value="${color}" class="filter-color" ${advancedFilters.colors.includes(color) ? 'checked' : ''}>
+            <div class="color-swatch" style="background-color: ${getColorCode(color)}"></div>
+            <label for="color-${color}">${color}</label>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+  
+  // Size filters
+  if (uniqueSizes.length > 0) {
+    html += `
+      <div class="filter-group">
+        <h3>Talla</h3>
+        ${uniqueSizes.map(size => `
+          <div class="filter-option">
+            <input type="checkbox" id="size-${size}" value="${size}" class="filter-size" ${advancedFilters.sizes.includes(size) ? 'checked' : ''}>
+            <label for="size-${size}">${size}</label>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+  
+  // Price range
+  html += `
+    <div class="filter-group">
+      <h3>Rango de Precio</h3>
+      <div class="price-range-inputs">
+        <input type="number" id="min-price" placeholder="Mín" min="0" max="${maxPrice}" value="${advancedFilters.minPrice || ''}">
+        <input type="number" id="max-price" placeholder="Máx" min="0" max="${maxPrice}" value="${advancedFilters.maxPrice || ''}">
+      </div>
+      <div class="text-xs text-gray-500 mt-1">
+        Rango: $${minPrice.toLocaleString()} - $${maxPrice.toLocaleString()}
+      </div>
+    </div>
+  `;
+  
+  // On sale filter
+  html += `
+    <div class="filter-group">
+      <div class="filter-option">
+        <input type="checkbox" id="on-sale-filter" ${advancedFilters.onSale ? 'checked' : ''}>
+        <label for="on-sale-filter">Solo en Oferta</label>
+      </div>
+    </div>
+  `;
+  
+  filterOptions.innerHTML = html;
+  
+  // Add event listeners
+  setupFilterEventListeners();
+}
+
+function setupFilterEventListeners() {
+  // Color filters
+  document.querySelectorAll('.filter-color').forEach(checkbox => {
+    checkbox.addEventListener('change', (e) => {
+      const color = e.target.value;
+      if (e.target.checked) {
+        if (!advancedFilters.colors.includes(color)) {
+          advancedFilters.colors.push(color);
+        }
+      } else {
+        advancedFilters.colors = advancedFilters.colors.filter(c => c !== color);
+      }
+      renderProducts();
+    });
+  });
+  
+  // Size filters
+  document.querySelectorAll('.filter-size').forEach(checkbox => {
+    checkbox.addEventListener('change', (e) => {
+      const size = e.target.value;
+      if (e.target.checked) {
+        if (!advancedFilters.sizes.includes(size)) {
+          advancedFilters.sizes.push(size);
+        }
+      } else {
+        advancedFilters.sizes = advancedFilters.sizes.filter(s => s !== size);
+      }
+      renderProducts();
+    });
+  });
+  
+  // Price range filters
+  const minPriceInput = document.getElementById('min-price');
+  const maxPriceInput = document.getElementById('max-price');
+  
+  if (minPriceInput) {
+    minPriceInput.addEventListener('input', (e) => {
+      advancedFilters.minPrice = e.target.value ? parseFloat(e.target.value) : null;
+      renderProducts();
+    });
+  }
+  
+  if (maxPriceInput) {
+    maxPriceInput.addEventListener('input', (e) => {
+      advancedFilters.maxPrice = e.target.value ? parseFloat(e.target.value) : null;
+      renderProducts();
+    });
+  }
+  
+  // On sale filter
+  const onSaleCheckbox = document.getElementById('on-sale-filter');
+  if (onSaleCheckbox) {
+    onSaleCheckbox.addEventListener('change', (e) => {
+      advancedFilters.onSale = e.target.checked;
+      renderProducts();
     });
   }
 }
