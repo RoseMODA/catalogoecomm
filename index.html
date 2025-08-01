@@ -205,6 +205,25 @@ s o <!DOCTYPE html>
   </div>
 
 
+  <!-- Homepage Suggestions Section -->
+  <section id="homepage-suggestions" class="max-w-7xl mx-auto px-4 py-6">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Sugerencias para vos</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div class="p-6 border rounded-lg hover:shadow-lg cursor-pointer transition-shadow" data-category="mujer">
+        <h3 class="font-semibold text-lg mb-2">Mujer</h3>
+        <p class="text-gray-600 text-sm">Descubre la última moda femenina</p>
+      </div>
+      <div class="p-6 border rounded-lg hover:shadow-lg cursor-pointer transition-shadow" data-category="hombre">
+        <h3 class="font-semibold text-lg mb-2">Hombre</h3>
+        <p class="text-gray-600 text-sm">Estilo y comodidad masculina</p>
+      </div>
+      <div class="p-6 border rounded-lg hover:shadow-lg cursor-pointer transition-shadow" data-category="ninos">
+        <h3 class="font-semibold text-lg mb-2">Niños/Bebés</h3>
+        <p class="text-gray-600 text-sm">Ropa cómoda para los más pequeños</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Category page view (hidden by default) -->
   <div id="category-page" class="hidden min-h-screen">
     <!-- Category header with navigation -->
@@ -308,6 +327,92 @@ s o <!DOCTYPE html>
       </div>
     </div>
   </div>
+
+  <!-- Detailed Product View Page (hidden by default) -->
+  <section id="product-detail-page" class="hidden max-w-7xl mx-auto px-4 py-6">
+    <button id="detail-back-btn" class="mb-4 flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+      <span>Volver</span>
+    </button>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Left: Image Gallery -->
+      <div id="detail-gallery">
+        <div class="mb-4">
+          <img id="detail-main-image" src="" alt="Producto Detallado" class="w-full h-96 lg:h-[500px] object-cover rounded-lg shadow-lg">
+        </div>
+        <div id="detail-thumbnails" class="flex space-x-2 overflow-x-auto">
+          <!-- Thumbnails will be inserted dynamically -->
+        </div>
+      </div>
+      
+      <!-- Right: Details -->
+      <div id="detail-info">
+        <h1 id="detail-name" class="text-3xl font-bold mb-2 text-gray-900"></h1>
+        <div id="detail-categories" class="mb-3">
+          <!-- Categories will be inserted dynamically -->
+        </div>
+        <div id="detail-prices" class="mb-4"></div>
+        <p id="detail-sku" class="text-sm text-gray-500 mb-4"></p>
+        <p id="detail-description" class="mb-6 text-gray-700 leading-relaxed"></p>
+        
+        <!-- Color Selection -->
+        <div id="detail-color-section" class="mb-4">
+          <label class="block text-sm font-medium mb-2">Color:</label>
+          <div id="detail-colors" class="flex space-x-2 flex-wrap">
+            <!-- Colors will be inserted dynamically -->
+          </div>
+          <p class="text-sm text-gray-600 mt-1" id="detail-selected-color">Selecciona un color</p>
+        </div>
+        
+        <!-- Size Selection -->
+        <div id="detail-size-section" class="mb-4">
+          <label class="block text-sm font-medium mb-2">Talla:</label>
+          <div id="detail-sizes" class="flex space-x-2 flex-wrap">
+            <!-- Sizes will be inserted dynamically -->
+          </div>
+          <p class="text-sm text-gray-600 mt-1" id="detail-selected-size">Selecciona una talla</p>
+        </div>
+        
+        <!-- Quantity -->
+        <div class="mb-6">
+          <label class="block text-sm font-medium mb-2">Cantidad:</label>
+          <div class="flex items-center space-x-3">
+            <button id="detail-qty-decrease" class="px-3 py-1 border border-gray-300 hover:bg-gray-100 transition-colors">-</button>
+            <span id="detail-quantity" class="px-4 py-1 border border-gray-300 min-w-[3rem] text-center">1</span>
+            <button id="detail-qty-increase" class="px-3 py-1 border border-gray-300 hover:bg-gray-100 transition-colors">+</button>
+          </div>
+          <p id="detail-stock" class="text-sm text-gray-600 mt-1"></p>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="space-y-3">
+          <button id="add-to-cart-detail" class="w-full bg-[#d63629] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#b22a26] transition-colors">
+            AÑADIR AL CARRITO
+          </button>
+          <button id="whatsapp-inquiry-detail" class="w-full bg-[#25D366] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#1ebe57] transition-colors">
+            CONSULTAR STOCK POR WHATSAPP
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Related Products -->
+    <div id="related-products" class="mt-12">
+      <h2 class="text-2xl font-bold mb-6 text-gray-900">Artículos Relacionados</h2>
+      <div class="carousel relative">
+        <button class="arrow-btn prev absolute top-1/2 left-2 transform -translate-y-1/2 z-10" id="related-prev">❮</button>
+        <div class="carousel-track overflow-hidden">
+          <div class="flex transition-transform duration-300" id="related-carousel-track">
+            <!-- Related product cards inserted dynamically -->
+          </div>
+        </div>
+        <button class="arrow-btn next absolute top-1/2 right-2 transform -translate-y-1/2 z-10" id="related-next">❯</button>
+      </div>
+    </div>
+  </section>
 
  <!-- Footer -->
   <footer class="py-12">
